@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rumbo y Aventura</title>
 <style>
     body {
@@ -12,112 +12,82 @@
         color: #333;
         text-align: center;
     }
-
-    /* HERO / HEADER con fondo restaurado */
     header {
-        background-image:
-          linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
-          url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80');
-        background-size: cover;
-        background-position: center;
-        min-height: 60vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        background: url('https://source.unsplash.com/1600x500/?travel') no-repeat center/cover;
+        padding: 80px 20px;
         color: white;
-        padding: 60px 20px;
-        text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+        font-size: 2.5em;
+        font-weight: bold;
+        text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
     }
-    header h1 {
-        margin: 0;
-        font-size: 3rem;
-        letter-spacing: 1px;
-    }
-    header p {
-        margin: 10px 0 0;
-        font-size: 1.15rem;
-        opacity: 0.95;
-    }
-
-    /* Botón más grande */
+    /* Botón responsivo */
     .btn-reservar {
         display: inline-block;
-        padding: 22px 72px;
-        font-size: 1.5rem;
-        background: linear-gradient(90deg,#ff7a00,#ff6600);
+        padding: 18px 40px;
+        font-size: 1.3em;
+        background: #ff6600;
         color: white;
         border: none;
-        border-radius: 14px;
+        border-radius: 12px;
         cursor: pointer;
-        margin: 24px 0;
-        transition: transform .28s ease, box-shadow .28s ease;
-        box-shadow: 0 8px 18px rgba(255,102,0,0.22);
-        text-decoration: none;
+        margin: 20px 0;
+        transition: all 0.3s ease;
     }
     .btn-reservar:hover {
-        transform: translateY(-4px) scale(1.02);
-        box-shadow: 0 14px 30px rgba(0,0,0,0.18);
+        background: #e55a00;
+        transform: scale(1.05);
     }
-
-    /* Contenedor de testimonios justo debajo del botón */
+    /* Testimonios con animación */
     .testimonios {
-        margin: 18px auto 50px;
-        max-width: 760px;
+        margin: 20px auto;
+        max-width: 90%;
         position: relative;
-        height: 130px; /* espacio para los cards absolutos */
-        padding: 0 16px;
+        height: auto;
+        min-height: 90px;
     }
-
     .testimonio {
         position: absolute;
-        left: 0;
         width: 100%;
         opacity: 0;
-        transform: translateY(10px) scale(.99);
-        transition: opacity .6s ease, transform .6s ease;
-        font-size: 1.05rem;
+        transition: opacity 0.8s ease-in-out;
+        font-size: 1.1em;
         font-style: italic;
-        background: linear-gradient(180deg, #ffffff, #fcfcfc);
-        padding: 18px;
-        border-radius: 10px;
-        box-shadow: 0 8px 18px rgba(0,0,0,0.08);
-        color: #222;
+        background: white;
+        padding: 12px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
     .testimonio.activo {
         opacity: 1;
-        transform: translateY(0) scale(1);
     }
-
-    /* Responsivo */
-    @media (max-width: 640px) {
-        header h1 { font-size: 2rem; text-align: center; }
-        header p { font-size: 1rem; text-align: center; }
-        .btn-reservar { padding: 16px 34px; font-size: 1.15rem; }
-        .testimonios { height: auto; position: static; }
+    /* Ajustes para móviles */
+    @media (max-width: 600px) {
+        header {
+            font-size: 1.8em;
+            padding: 50px 15px;
+        }
+        .btn-reservar {
+            padding: 14px 28px;
+            font-size: 1.1em;
+        }
         .testimonio {
-            position: relative;
-            margin-bottom: 12px;
-            opacity: 1;
-            transform: none;
+            font-size: 0.95em;
+            padding: 10px;
         }
     }
 </style>
 </head>
 <body>
 
-<header>
-  <h1>Rumbo y Aventura</h1>
-  <p>Viajes, tours y experiencias inolvidables</p>
-</header>
+<header>Rumbo y Aventura</header>
 
-<!-- Botón grande que lleva a otra página -->
-<div style="display:flex; justify-content:center; margin-top: -40px;">
-  <a href="reservas.html" class="btn-reservar" id="reservarBtn">¡Reserva tu viaje ahora!</a>
+<!-- Botón con enlace en la misma pestaña -->
+<div style="display:flex; justify-content:center; margin-top: -20px;">
+  <a href="destinos.html" class="btn-reservar">¡Reserva tu viaje ahora!</a>
 </div>
 
-<!-- Testimonios (debajo del botón) -->
-<div class="testimonios" aria-live="polite">
+<!-- Testimonios -->
+<div class="testimonios">
     <div class="testimonio activo">"Una experiencia increíble, todo bien organizado." – María P.</div>
     <div class="testimonio">"Los guías fueron muy amables y profesionales." – Juan C.</div>
     <div class="testimonio">"Definitivamente volveré a viajar con ellos." – Laura G.</div>
@@ -126,14 +96,11 @@
 <script>
     let index = 0;
     const testimonios = document.querySelectorAll('.testimonio');
-
-    if (window.innerWidth > 640 && testimonios.length > 1) {
-      setInterval(() => {
+    setInterval(() => {
         testimonios[index].classList.remove('activo');
         index = (index + 1) % testimonios.length;
         testimonios[index].classList.add('activo');
-      }, 2000);
-    }
+    }, 2000);
 </script>
 
 </body>
