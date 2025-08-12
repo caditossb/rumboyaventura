@@ -20,11 +20,10 @@
         font-weight: bold;
         text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
     }
-    /* Botón responsivo */
     .btn-reservar {
         display: inline-block;
-        padding: 18px 40px;
-        font-size: 1.3em;
+        padding: 20px 50px;
+        font-size: 1.5em;
         background: #ff6600;
         color: white;
         border: none;
@@ -37,41 +36,49 @@
         background: #e55a00;
         transform: scale(1.05);
     }
-    /* Testimonios con animación */
     .testimonios {
-        margin: 20px auto;
-        max-width: 90%;
+        margin: 30px auto;
+        max-width: 600px;
         position: relative;
-        height: auto;
-        min-height: 90px;
+        height: 120px;
     }
     .testimonio {
         position: absolute;
         width: 100%;
         opacity: 0;
         transition: opacity 0.8s ease-in-out;
-        font-size: 1.1em;
+        font-size: 1.2em;
         font-style: italic;
         background: white;
-        padding: 12px;
+        padding: 15px;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
     .testimonio.activo {
         opacity: 1;
     }
-    /* Ajustes para móviles */
+    /* Animación suave */
+    @keyframes fadeInOut {
+        0% { opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { opacity: 0; }
+    }
+    .testimonio.activo {
+        animation: fadeInOut 2s ease-in-out;
+    }
+    /* Responsivo */
     @media (max-width: 600px) {
         header {
             font-size: 1.8em;
-            padding: 50px 15px;
+            padding: 60px 15px;
         }
         .btn-reservar {
-            padding: 14px 28px;
-            font-size: 1.1em;
+            font-size: 1.2em;
+            padding: 15px 30px;
         }
         .testimonio {
-            font-size: 0.95em;
+            font-size: 1em;
             padding: 10px;
         }
     }
@@ -81,12 +88,13 @@
 
 <header>Rumbo y Aventura</header>
 
-<!-- Botón con enlace en la misma pestaña -->
-<div style="display:flex; justify-content:center; margin-top: -20px;">
-  <a href="destinos.html" class="btn-reservar">¡Reserva tu viaje ahora!</a>
+<!-- Botón grande con enlace -->
+<div style="display:flex; justify-content:center; margin-top: -40px;">
+    <a href="otra-pagina.html">
+        <button class="btn-reservar">¡Reserva tu viaje ahora!</button>
+    </a>
 </div>
 
-<!-- Testimonios -->
 <div class="testimonios">
     <div class="testimonio activo">"Una experiencia increíble, todo bien organizado." – María P.</div>
     <div class="testimonio">"Los guías fueron muy amables y profesionales." – Juan C.</div>
