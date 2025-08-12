@@ -15,7 +15,6 @@
 
     /* HERO / HEADER con fondo restaurado */
     header {
-        /* fondo restaurado: imagen tipo playa/viaje */
         background-image:
           linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
           url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80');
@@ -54,6 +53,7 @@
         margin: 24px 0;
         transition: transform .28s ease, box-shadow .28s ease;
         box-shadow: 0 8px 18px rgba(255,102,0,0.22);
+        text-decoration: none;
     }
     .btn-reservar:hover {
         transform: translateY(-4px) scale(1.02);
@@ -91,10 +91,16 @@
 
     /* Responsivo */
     @media (max-width: 640px) {
-        header h1 { font-size: 2rem; }
+        header h1 { font-size: 2rem; text-align: center; }
+        header p { font-size: 1rem; text-align: center; }
         .btn-reservar { padding: 16px 34px; font-size: 1.15rem; }
         .testimonios { height: auto; position: static; }
-        .testimonio { position: relative; margin-bottom: 12px; opacity: 1; transform: none; }
+        .testimonio {
+            position: relative;
+            margin-bottom: 12px;
+            opacity: 1;
+            transform: none;
+        }
     }
 </style>
 </head>
@@ -107,7 +113,7 @@
 
 <!-- Botón grande que lleva a otra página -->
 <div style="display:flex; justify-content:center; margin-top: -40px;">
-  <a href="" class="btn-reservar" id="reservarBtn">¡Reserva tu viaje ahora!</a>
+  <a href="reservas.html" class="btn-reservar" id="reservarBtn">¡Reserva tu viaje ahora!</a>
 </div>
 
 <!-- Testimonios (debajo del botón) -->
@@ -118,12 +124,10 @@
 </div>
 
 <script>
-    // Rotación automática cada 2 segundos
     let index = 0;
     const testimonios = document.querySelectorAll('.testimonio');
 
-    // evita fallo si solo hay 1 item
-    if (testimonios.length > 1) {
+    if (window.innerWidth > 640 && testimonios.length > 1) {
       setInterval(() => {
         testimonios[index].classList.remove('activo');
         index = (index + 1) % testimonios.length;
