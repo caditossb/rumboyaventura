@@ -13,18 +13,22 @@
         text-align: center;
     }
     header {
-        background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80') no-repeat center/cover;
-        height: 100vh; /* Ocupa toda la pantalla */
-        min-height: 400px; /* Por si el dispositivo es muy pequeño */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-        color: white;
-        font-size: 2.5em;
-        font-weight: bold;
-        text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
-        box-sizing: border-box;
+  background-image: url('https://link-de-tu-imagen.jpg');
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 60vh;       /* Ocupa el 60% de la altura de pantalla */
+  min-height: 300px;  /* Para asegurar visibilidad mínima */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: white;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+}
+@media (max-width: 600px) {
+  header { font-size: 1.8rem; height: 50vh; }
     }
     .btn-reservar {
         display: inline-block;
@@ -119,5 +123,6 @@
 
 </body>
 </html>
+
 
 
